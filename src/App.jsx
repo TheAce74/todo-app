@@ -1,9 +1,10 @@
 import { useEffect, useReducer, useRef } from "react";
 
+//initial holds the initial todo items which would be an empty array for new users of the app and an array of tasks for returning users
 const initial = localStorage.getItem("todos")
   ? JSON.parse(localStorage.getItem("todos"))
   : [];
-  
+
 function App() {
   //reducer function for the useReducer hook which handles all complex logic of the app, it takes in 2 arguments, state and action and returns the new state based on the action performed
   const reducer = (state, action) => {
@@ -43,7 +44,6 @@ function App() {
   //todos stores current todo items
   //setTodos is a function that handles all functionality in the app depending on the type of action you want to perform
   //reducer is a function that updates state depending on the users' action, which in turn leads to a re-render i.e. since it changes state
-  //initial holds the initial todo items which would be an empty array for new users of the app and an array of tasks for returning users
   const [todos, setTodos] = useReducer(reducer, initial);
   //the title and description useRefs target the input fields to collect data
   const titleRef = useRef(null);
